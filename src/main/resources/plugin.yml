@@ -1,0 +1,6 @@
+name: DraimLib
+version: ${project.version}
+main: me.draimlib.DraimLib
+api-version: 1.17
+authors: [ DraimGooSe ]
+description: Библиотеки для плагинов от DraimGooSe
