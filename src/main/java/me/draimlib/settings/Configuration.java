@@ -177,10 +177,15 @@ public class Configuration {
             }
         }
         for (String path : conf.getKeys(true)) {
-            if(!default_conf.contains(path) || conf.get(path).getClass().getName() != default_conf.get(path).getClass().getName())
+            Object confOption = conf.get(path);
+            Object confOptionDefault = default_conf.get(path);
+            if (confOption != null && confOptionDefault !=null)
             {
-                plugin.getLogger().log(Level.WARNING, path + " удалено с " + cfg);
-                conf.set(path, null);
+                if (!default_conf.contains(path) || !confOption.getClass().getName().equals(confOptionDefault.getClass().getName()))
+                {
+                    plugin.getLogger().log(Level.WARNING, path + " удалено с " + cfg);
+                    conf.set(path, null);
+                }
             }
         }
         try {
